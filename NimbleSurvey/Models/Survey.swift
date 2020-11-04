@@ -38,7 +38,6 @@ struct Survey: Encodable, Decodable {
         description = try attributeContainer.decode(String.self, forKey: .description)
         isActive = try attributeContainer.decode(Bool.self, forKey: .isActive)
         imageUrl = try attributeContainer.decode(String.self, forKey: .imageUrl)
-//        createAt = Date()
         surveyType = try attributeContainer.decode(String.self, forKey: .surveyType)
     }
     
