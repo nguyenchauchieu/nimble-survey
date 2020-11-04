@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="NimbleSurvey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="ItR-jz-JqF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="QkM-LN-E84">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNimble" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-Mg-aD6">
+                                <rect key="frame" x="92" y="425.5" width="230" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Mo3-Mg-aD6" secondAttribute="height" multiplier="403:96" id="jNA-vd-R8M"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="spg-Yv-uHu">
+                                <rect key="frame" x="32" y="336.5" width="350" height="233"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSA-9Y-WtU" customClass="CurvedTextField" customModule="NimbleSurvey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="64.5"/>
+                                        <color key="backgroundColor" white="1" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udl-x2-kOw" customClass="CurvedTextField" customModule="NimbleSurvey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84.5" width="350" height="64"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.17999999999999999" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnz-5x-JoB" customClass="CurvedButton" customModule="NimbleSurvey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="168.5" width="350" height="64.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="Log in">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jcm-6j-Xvy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ItR-jz-JqF" secondAttribute="bottom" id="1DO-Ls-X5h"/>
+                            <constraint firstItem="Mo3-Mg-aD6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7h4-pc-pmx"/>
+                            <constraint firstItem="QkM-LN-E84" firstAttribute="leading" secondItem="ItR-jz-JqF" secondAttribute="leading" id="8Rf-RK-LQE"/>
+                            <constraint firstItem="QkM-LN-E84" firstAttribute="top" secondItem="ItR-jz-JqF" secondAttribute="top" id="Caq-RV-LRo"/>
+                            <constraint firstItem="spg-Yv-uHu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.26" id="Cca-cC-Pf1"/>
+                            <constraint firstItem="QkM-LN-E84" firstAttribute="bottom" secondItem="ItR-jz-JqF" secondAttribute="bottom" id="GsF-W5-216"/>
+                            <constraint firstAttribute="trailing" secondItem="ItR-jz-JqF" secondAttribute="trailing" id="JMl-3N-BCt"/>
+                            <constraint firstItem="spg-Yv-uHu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="My4-dd-6Kc"/>
+                            <constraint firstItem="Mo3-Mg-aD6" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="5/9" id="X7w-67-YMS"/>
+                            <constraint firstItem="ItR-jz-JqF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Y3C-R8-kiL"/>
+                            <constraint firstItem="Mo3-Mg-aD6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="fpY-by-2Hg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="spg-Yv-uHu" secondAttribute="trailing" constant="32" id="ku3-TC-Owd"/>
+                            <constraint firstItem="Mo3-Mg-aD6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="750" constant="100" id="qjY-eB-MyX"/>
+                            <constraint firstItem="spg-Yv-uHu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="rfB-uC-Jbb"/>
+                            <constraint firstItem="ItR-jz-JqF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sIO-F3-gcw"/>
+                            <constraint firstItem="QkM-LN-E84" firstAttribute="trailing" secondItem="ItR-jz-JqF" secondAttribute="trailing" id="zHX-cs-0wc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0tv-xT-DhN"/>
+                    <connections>
+                        <outlet property="backgroundOverlayImageView" destination="QkM-LN-E84" id="xmh-uV-xEP"/>
+                        <outlet property="emailTextField" destination="gSA-9Y-WtU" id="BjR-aJ-L3B"/>
+                        <outlet property="loginButton" destination="Fnz-5x-JoB" id="CB7-ar-W2Z"/>
+                        <outlet property="loginFormStackView" destination="spg-Yv-uHu" id="9mR-Tj-0Ec"/>
+                        <outlet property="nimbleLogoImageView" destination="Mo3-Mg-aD6" id="Geo-iL-3BE"/>
+                        <outlet property="nimbleLogoTopConstraint" destination="qjY-eB-MyX" id="sZH-gf-fFY"/>
+                        <outlet property="nimbleLogoVerticalCenterConstraint" destination="fpY-by-2Hg" id="lMn-h7-Lpg"/>
+                        <outlet property="nimbleLogoWidthConstraint" destination="jNA-vd-R8M" id="Xm3-w7-LaA"/>
+                        <outlet property="passwordTextField" destination="Udl-x2-kOw" id="Ay1-k9-Kko"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-652" y="4"/>
+        </scene>
+        <!--Reset Password View Controller-->
+        <scene sceneID="p2F-7B-tbS">
+            <objects>
+                <viewController storyboardIdentifier="ResetPasswordViewController" id="wSk-xc-5Ct" customClass="ResetPasswordViewController" customModule="NimbleSurvey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nmb-La-vyu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-d3-H8A">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-mr-IO6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNimble" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-SN-jtU">
+                                <rect key="frame" x="92" y="144" width="230" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ohY-SN-jtU" secondAttribute="height" multiplier="403:96" id="9fa-kJ-QdZ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tLn-Ed-tVj">
+                                <rect key="frame" x="32" y="386" width="350" height="134"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="in9-to-Imo" customClass="CurvedTextField" customModule="NimbleSurvey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="57"/>
+                                        <color key="backgroundColor" white="1" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-Cc-znv" customClass="CurvedButton" customModule="NimbleSurvey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="77" width="350" height="57"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonTouchUpInside:" destination="wSk-xc-5Ct" eventType="touchUpInside" id="hjR-mi-L2n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="S3e-jk-q2a"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mVO-mr-IO6" firstAttribute="trailing" secondItem="nqm-d3-H8A" secondAttribute="trailing" id="4tj-uO-mqb"/>
+                            <constraint firstItem="tLn-Ed-tVj" firstAttribute="height" secondItem="Nmb-La-vyu" secondAttribute="height" multiplier="0.15" id="73W-Q1-DVG"/>
+                            <constraint firstItem="tLn-Ed-tVj" firstAttribute="centerY" secondItem="S3e-jk-q2a" secondAttribute="centerY" id="Ayy-FE-a6M"/>
+                            <constraint firstItem="nqm-d3-H8A" firstAttribute="top" secondItem="Nmb-La-vyu" secondAttribute="top" id="BPk-oR-8ks"/>
+                            <constraint firstItem="ohY-SN-jtU" firstAttribute="width" secondItem="Nmb-La-vyu" secondAttribute="width" multiplier="5/9" id="BxB-1V-cWe"/>
+                            <constraint firstItem="S3e-jk-q2a" firstAttribute="trailing" secondItem="tLn-Ed-tVj" secondAttribute="trailing" constant="32" id="FKp-LI-ckR"/>
+                            <constraint firstItem="tLn-Ed-tVj" firstAttribute="leading" secondItem="S3e-jk-q2a" secondAttribute="leading" constant="32" id="FRI-Ql-BVI"/>
+                            <constraint firstAttribute="bottom" secondItem="nqm-d3-H8A" secondAttribute="bottom" id="MsX-0i-M7L"/>
+                            <constraint firstItem="nqm-d3-H8A" firstAttribute="leading" secondItem="Nmb-La-vyu" secondAttribute="leading" id="NdH-4G-NYZ"/>
+                            <constraint firstAttribute="trailing" secondItem="nqm-d3-H8A" secondAttribute="trailing" id="P38-6i-ZTL"/>
+                            <constraint firstItem="ohY-SN-jtU" firstAttribute="centerX" secondItem="S3e-jk-q2a" secondAttribute="centerX" id="oXM-0i-utK"/>
+                            <constraint firstItem="ohY-SN-jtU" firstAttribute="top" secondItem="S3e-jk-q2a" secondAttribute="top" constant="100" id="okh-vn-Qrj"/>
+                            <constraint firstItem="mVO-mr-IO6" firstAttribute="top" secondItem="nqm-d3-H8A" secondAttribute="top" id="p2t-pY-88J"/>
+                            <constraint firstItem="mVO-mr-IO6" firstAttribute="leading" secondItem="nqm-d3-H8A" secondAttribute="leading" id="qAS-9W-4kW"/>
+                            <constraint firstItem="mVO-mr-IO6" firstAttribute="bottom" secondItem="nqm-d3-H8A" secondAttribute="bottom" id="y3N-e5-LTw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="in9-to-Imo" id="0dQ-3z-Vwk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVf-OK-d9c" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="252" y="9"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackgroundOverlay" width="375" height="812"/>
+        <image name="LaunchImage" width="375" height="812"/>
+        <image name="LogoNimble" width="201.5" height="48"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

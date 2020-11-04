@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        NotificationCenter.default.addObserver(self, selector:#selector(loginDone(notification:)),name: Constants.NimbleSurveyNotifications.LoginDone,object: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,7 +47,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    @objc func loginDone(notification: Notification) {
+        let storyboard = UIStoryboard.init(name: Constants.Storyboards.main, bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(identifier: Constants.ViewControllers.homeViewController) as! HomeViewController
+        self.window?.rootViewController = homeViewController
+    }
 }
 
