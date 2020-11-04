@@ -13,8 +13,6 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var emailTextField: CurvedTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: Any) {

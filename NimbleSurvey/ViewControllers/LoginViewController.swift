@@ -121,13 +121,11 @@ class LoginViewController: UIViewController {
         guard let passwordText = passwordTextField.text else { return }
         APIClient.shared.login(email: emailText, password: passwordText) { [weak self] (loggedUserInfo) in
             self?.activityIndicatorView.stopAnimating()
-//            activityIndicatorView.removeFromSuperview()
             if loggedUserInfo != nil {
                 NotificationCenter.default.post(name: Constants.NimbleSurveyNotifications.LoginDone, object: nil)
             }
         } failure: { [weak self] (errors) in
             self?.activityIndicatorView.stopAnimating()
-//            activityIndicatorView.removeFromSuperview()
             let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle, subtitle: errors?.getErrorsString(), style: .info, colors: CustomBannerColors())
             banner.show()
         }
