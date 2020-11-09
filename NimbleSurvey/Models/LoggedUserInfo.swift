@@ -53,4 +53,22 @@ struct LoggedUserInfo: Encodable, Decodable {
         try loggedUserInfoAttributeContainer.encode(createdAt, forKey: .createdAt)
         try loggedUserInfoAttributeContainer.encode(expiredIn, forKey: .expiresIn)
     }
+    
+    static func saveAccessToken(_ accessToken: String) {
+        KeychainWrapper.standard.set(accessToken, forKey: Constants.KeychainKeys.accessToken)
+    }
+    
+    static func saveRefreshToken(_ refreshToken: String) {
+        KeychainWrapper.standard.set(refreshToken, forKey: Constants.KeychainKeys.refreshToken)
+    }
+    
+    static func getAccessToken() -> String? {
+        let accessToken = KeychainWrapper.standard.string(forKey: Constants.KeychainKeys.accessToken)
+        return accessToken
+    }
+    
+    static func getRefreshToken() -> String? {
+        let refreshToken = KeychainWrapper.standard.string(forKey: Constants.KeychainKeys.refreshToken)
+        return refreshToken
+    }
 }

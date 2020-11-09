@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         hideLoginFormStackView()
         setupEmailTextField()
         setupIndicatorView()
-        if let savedData = UserDefaults.standard.object(forKey: Constants.UserDefaultKeys.loggedUserInfo) as? Data, let loggedUserInfo = try? JSONDecoder.init().decode(LoggedUserInfo.self, from: savedData) {
+        if LoggedUserInfo.getAccessToken() != nil {
             NotificationCenter.default.post(name: Constants.NimbleSurveyNotifications.LoginDone, object: nil)
         }
     }
@@ -119,11 +119,9 @@ class LoginViewController: UIViewController {
         activityIndicatorView.startAnimating()
         guard let emailText = emailTextField.text else { return }
         guard let passwordText = passwordTextField.text else { return }
-        APIClient.shared.login(email: emailText, password: passwordText) { [weak self] (loggedUserInfo) in
+        APIClient.shared.login(email: emailText, password: passwordText) { [weak self] in
             self?.activityIndicatorView.stopAnimating()
-            if loggedUserInfo != nil {
-                NotificationCenter.default.post(name: Constants.NimbleSurveyNotifications.LoginDone, object: nil)
-            }
+            NotificationCenter.default.post(name: Constants.NimbleSurveyNotifications.LoginDone, object: nil)
         } failure: { [weak self] (errors) in
             self?.activityIndicatorView.stopAnimating()
             let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle, subtitle: errors?.getErrorsString(), style: .info, colors: CustomBannerColors())
