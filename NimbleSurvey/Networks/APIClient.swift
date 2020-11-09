@@ -124,30 +124,19 @@ class APIClient: NSObject {
         if let accessToken = LoggedUserInfo.getAccessToken() {
             headers.add(name: "Authorization", value: "Bearer" + " " + accessToken)
         }
-        let request = AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: nil, requestModifier: nil)
+        let interceptor = NimbleRequestInterceptor()
+        let request = AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor, requestModifier: nil)
         request.validate().response { (response) in
             switch response.result {
             case .success( _):
                 success(response.data)
             case .failure( _):
-                if response.response?.statusCode == 401 {
-                    if let refreshToken = LoggedUserInfo.getRefreshToken() {
-                        self.refreshToken(refreshToken: refreshToken) {
-                            
-                        } failure: { (errorMessage) in
-                            
-                        }
-                        
-                    }
+                if let data = response.data {
+                    let jsonDecoder = JSONDecoder()
+                    let errors = try? jsonDecoder.decode(ResponseErrors.self, from: data)
+                    failure(errors)
                 } else {
-                    if let data = response.data {
-                        let jsonDecoder = JSONDecoder()
-                        let errors = try? jsonDecoder.decode(ResponseErrors.self, from: data)
-                        failure(errors)
-                    } else {
-                        failure(ResponseErrors(errors: [ResponseError]()))
-                    }
-                    
+                    failure(ResponseErrors(errors: [ResponseError]()))
                 }
             }
         }

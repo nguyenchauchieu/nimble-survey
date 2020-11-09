@@ -10,6 +10,7 @@
 		638C1DE3DB33ECB604FB55FB /* Pods_NimbleSurvey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E6D8FD1A6D4AC2960C8FAD /* Pods_NimbleSurvey.framework */; };
 		F71DECA6255998C100741584 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71DECA5255998C100741584 /* KeychainWrapper.swift */; };
 		F71DECAC25599EA300741584 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71DECAB25599EA300741584 /* KeychainItemAccessibility.swift */; };
+		F71DECB72559A5AD00741584 /* NimbleRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71DECB62559A5AD00741584 /* NimbleRequestInterceptor.swift */; };
 		F73FC9D82551E7F2009F703F /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73FC9D72551E7F2009F703F /* ResponseError.swift */; };
 		F73FC9DD2551E836009F703F /* ResponseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73FC9DC2551E836009F703F /* ResponseErrors.swift */; };
 		F75C12A9254C0F5A00D551EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C12A8254C0F5A00D551EA /* AppDelegate.swift */; };
@@ -61,6 +62,7 @@
 		A9E6D8FD1A6D4AC2960C8FAD /* Pods_NimbleSurvey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NimbleSurvey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71DECA5255998C100741584 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		F71DECAB25599EA300741584 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		F71DECB62559A5AD00741584 /* NimbleRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleRequestInterceptor.swift; sourceTree = "<group>"; };
 		F73FC9D72551E7F2009F703F /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		F73FC9DC2551E836009F703F /* ResponseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrors.swift; sourceTree = "<group>"; };
 		F75C12A5254C0F5A00D551EA /* NimbleSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NimbleSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +256,7 @@
 			children = (
 				F7BE5E88254DDD9200103A2C /* Endpoints.swift */,
 				F7BE5EAF254F135800103A2C /* APIClient.swift */,
+				F71DECB62559A5AD00741584 /* NimbleRequestInterceptor.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				F7BE5E75254CA20400103A2C /* ResetPasswordViewController.swift in Sources */,
 				F73FC9DD2551E836009F703F /* ResponseErrors.swift in Sources */,
 				F7FE94EA2551CE980018A4DC /* ImageSaver.swift in Sources */,
+				F71DECB72559A5AD00741584 /* NimbleRequestInterceptor.swift in Sources */,
 				F7BE5E80254DD24900103A2C /* LoggedUserInfo.swift in Sources */,
 				F7FE95062551DF020018A4DC /* CustomBannerColors.swift in Sources */,
 				F73FC9D82551E7F2009F703F /* ResponseError.swift in Sources */,
