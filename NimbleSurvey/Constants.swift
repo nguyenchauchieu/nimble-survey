@@ -42,6 +42,10 @@ struct Constants {
     
     struct UserDefaultKeys {
         static let cachedSurveys = "cachedSurveys"
-        static let loggedUserInfo = "loggedUserInfo"
+    }
+    
+    struct KeychainKeys {
+        static let accessToken = "accessToken"
+        static let refreshToken = "refreshToken"
     }
 }

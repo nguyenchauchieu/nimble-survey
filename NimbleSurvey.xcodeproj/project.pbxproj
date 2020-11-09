@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		638C1DE3DB33ECB604FB55FB /* Pods_NimbleSurvey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E6D8FD1A6D4AC2960C8FAD /* Pods_NimbleSurvey.framework */; };
+		F71DECA6255998C100741584 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71DECA5255998C100741584 /* KeychainWrapper.swift */; };
+		F71DECAC25599EA300741584 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71DECAB25599EA300741584 /* KeychainItemAccessibility.swift */; };
 		F73FC9D82551E7F2009F703F /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73FC9D72551E7F2009F703F /* ResponseError.swift */; };
 		F73FC9DD2551E836009F703F /* ResponseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73FC9DC2551E836009F703F /* ResponseErrors.swift */; };
 		F75C12A9254C0F5A00D551EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C12A8254C0F5A00D551EA /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 		0C82415AD9BFE04CF4073D20 /* Pods-NimbleSurvey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimbleSurvey.release.xcconfig"; path = "Target Support Files/Pods-NimbleSurvey/Pods-NimbleSurvey.release.xcconfig"; sourceTree = "<group>"; };
 		5111834AC1E850B18A4F6983 /* Pods-NimbleSurvey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimbleSurvey.debug.xcconfig"; path = "Target Support Files/Pods-NimbleSurvey/Pods-NimbleSurvey.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E6D8FD1A6D4AC2960C8FAD /* Pods_NimbleSurvey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NimbleSurvey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71DECA5255998C100741584 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		F71DECAB25599EA300741584 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		F73FC9D72551E7F2009F703F /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		F73FC9DC2551E836009F703F /* ResponseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrors.swift; sourceTree = "<group>"; };
 		F75C12A5254C0F5A00D551EA /* NimbleSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NimbleSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +136,15 @@
 				A9E6D8FD1A6D4AC2960C8FAD /* Pods_NimbleSurvey.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F71DECAA25599E9A00741584 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				F71DECAB25599EA300741584 /* KeychainItemAccessibility.swift */,
+				F71DECA5255998C100741584 /* KeychainWrapper.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		F75C129C254C0F5A00D551EA = {
@@ -248,6 +261,7 @@
 		F7FE94CE255128CC0018A4DC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F71DECAA25599E9A00741584 /* Keychain */,
 				F7FE94CF255129640018A4DC /* SurveyService.swift */,
 				F7FE94E92551CE980018A4DC /* ImageSaver.swift */,
 			);
@@ -461,10 +475,12 @@
 				F7FE94C225511C5F0018A4DC /* Survey.swift in Sources */,
 				F7BE5E89254DDD9200103A2C /* Endpoints.swift in Sources */,
 				F77A64CC2550996A002BD770 /* HomeViewController.swift in Sources */,
+				F71DECA6255998C100741584 /* KeychainWrapper.swift in Sources */,
 				F7FE94D0255129640018A4DC /* SurveyService.swift in Sources */,
 				F7FE94C7255125580018A4DC /* SurveysResponseModel.swift in Sources */,
 				F7FE94D9255140430018A4DC /* UIImageView.swift in Sources */,
 				F75C12AB254C0F5A00D551EA /* SceneDelegate.swift in Sources */,
+				F71DECAC25599EA300741584 /* KeychainItemAccessibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

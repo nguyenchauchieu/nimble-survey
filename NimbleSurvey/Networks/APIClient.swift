@@ -14,7 +14,7 @@ class APIClient: NSObject {
     
     static let shared = APIClient()
     
-    func login(email: String, password: String, success: @escaping (LoggedUserInfo?) -> Void, failure: @escaping FailureResponse) {
+    func login(email: String, password: String, success: @escaping () -> Void, failure: @escaping FailureResponse) {
         var parameters = [String: Any?]()
         parameters["grant_type"] = "password"
         parameters["email"] = email
@@ -26,11 +26,10 @@ class APIClient: NSObject {
         request.validate().response { (response) in
             switch response.result {
             case .success( _):
-                if let data = response.data {
-                    let loggedUserInfo = try? JSONDecoder().decode(LoggedUserInfo.self, from: data)
-                    let loggedUserInfoData = try? JSONEncoder().encode(loggedUserInfo)
-                    UserDefaults.standard.set(loggedUserInfoData, forKey: Constants.UserDefaultKeys.loggedUserInfo)
-                    success(loggedUserInfo)
+                if let data = response.data, let loggedUserInfo = try? JSONDecoder().decode(LoggedUserInfo.self, from: data) {
+                    LoggedUserInfo.saveAccessToken(loggedUserInfo.accessToken)
+                    LoggedUserInfo.saveRefreshToken(loggedUserInfo.refreshToken)
+                    success()
                 } else {
                     failure(ResponseErrors(errors: [ResponseError]()))
                 }
@@ -46,7 +45,7 @@ class APIClient: NSObject {
         }
     }
     
-    func refreshToken(refreshToken: String, success: @escaping (LoggedUserInfo?) -> Void, failure: @escaping FailureResponse) {
+    func refreshToken(refreshToken: String, success: @escaping () -> Void, failure: @escaping FailureResponse) {
         var parameters = [String: Any?]()
         parameters["grant_type"] = "refresh_token"
         parameters["refresh_token"] = refreshToken
@@ -57,11 +56,10 @@ class APIClient: NSObject {
         request.validate().response { (response) in
             switch response.result {
             case .success( _):
-                if let data = response.data {
-                    let loggedUserInfo = try? JSONDecoder().decode(LoggedUserInfo.self, from: data)
-                    let loggedUserInfoData = try? JSONEncoder().encode(loggedUserInfo)
-                    UserDefaults.standard.set(loggedUserInfoData, forKey: Constants.UserDefaultKeys.loggedUserInfo)
-                    success(loggedUserInfo)
+                if let data = response.data, let loggedUserInfo = try? JSONDecoder().decode(LoggedUserInfo.self, from: data) {
+                    LoggedUserInfo.saveAccessToken(loggedUserInfo.accessToken)
+                    LoggedUserInfo.saveRefreshToken(loggedUserInfo.refreshToken)
+                    success()
                 } else {
                     failure(ResponseErrors(errors: [ResponseError]()))
                 }
@@ -123,8 +121,8 @@ class APIClient: NSObject {
                              success: @escaping SuccessResponse,
                              failure: @escaping FailureResponse) {
         var headers = HTTPHeaders()
-        if let savedData = UserDefaults.standard.object(forKey: Constants.UserDefaultKeys.loggedUserInfo) as? Data, let loggedUserInfo = try? JSONDecoder.init().decode(LoggedUserInfo.self, from: savedData) {
-            headers.add(name: "Authorization", value: "Bearer" + " " + loggedUserInfo.accessToken)
+        if let accessToken = LoggedUserInfo.getAccessToken() {
+            headers.add(name: "Authorization", value: "Bearer" + " " + accessToken)
         }
         let request = AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: nil, requestModifier: nil)
         request.validate().response { (response) in
@@ -133,8 +131,8 @@ class APIClient: NSObject {
                 success(response.data)
             case .failure( _):
                 if response.response?.statusCode == 401 {
-                    if let savedData = UserDefaults.standard.object(forKey: Constants.UserDefaultKeys.loggedUserInfo) as? Data, let loggedUserInfo = try? JSONDecoder.init().decode(LoggedUserInfo.self, from: savedData) {
-                        self.refreshToken(refreshToken: loggedUserInfo.refreshToken) { (response) in
+                    if let refreshToken = LoggedUserInfo.getRefreshToken() {
+                        self.refreshToken(refreshToken: refreshToken) {
                             
                         } failure: { (errorMessage) in
                             
