@@ -12,11 +12,14 @@ import NVActivityIndicatorView
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var surveysCollectionView: UICollectionView!
+    private let refreshControl = UIRefreshControl()
     var activityIndicatorView: NVActivityIndicatorView!
     var surveys = [Survey]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(refreshControllPulled(_:)), for: .valueChanged)
+        surveysCollectionView.refreshControl = refreshControl
         surveysCollectionView.delegate = self
         surveysCollectionView.dataSource = self
         setupIndicatorView()
@@ -46,6 +49,11 @@ class HomeViewController: UIViewController {
             banner.show()
         }
 
+    }
+    
+    @objc func refreshControllPulled(_ sender: Any) {
+        fetchSurveyList()
+        refreshControl.endRefreshing()
     }
 
 }
