@@ -18,10 +18,14 @@ class ResetPasswordViewController: UIViewController {
     @IBAction func resetButtonTouchUpInside(_ sender: Any) {
         let emailText = emailTextField.text ?? ""
         APIClient.shared.forgotPassword(email: emailText) {
-            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.checkMailTitle, subtitle: Constants.Contents.Banner.checkMailDescription, style: .info, colors: CustomBannerColors())
+            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.checkMailTitle,
+                                                   subtitle: Constants.Contents.Banner.checkMailDescription,
+                                                   style: .info, colors: CustomBannerColors())
             banner.show()
         } failure: { (errors) in
-            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle, subtitle: errors?.getErrorsString(), style: .info, colors: CustomBannerColors())
+            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle,
+                                                   subtitle: errors?.getErrorsString(), style: .info,
+                                                   colors: CustomBannerColors())
             banner.show()
         }
 

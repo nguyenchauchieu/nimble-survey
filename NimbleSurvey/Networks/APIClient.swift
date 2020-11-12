@@ -22,7 +22,9 @@ class APIClient: NSObject {
         parameters["client_id"] = Constants.clienId
         parameters["client_secret"] = Constants.clientSecret
         let headers = HTTPHeaders()
-        let request = AF.request(Endpoints.baseUrl + Endpoints.loginUrl, method: .post, parameters: parameters as Parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil, requestModifier: nil)
+        let request = AF.request(Endpoints.baseUrl + Endpoints.loginUrl, method: .post,
+                                 parameters: parameters as Parameters, encoding: JSONEncoding.default,
+                                 headers: headers, interceptor: nil, requestModifier: nil)
         request.validate().response { (response) in
             switch response.result {
             case .success( _):
@@ -52,7 +54,9 @@ class APIClient: NSObject {
         parameters["client_id"] = Constants.clienId
         parameters["client_secret"] = Constants.clientSecret
         let headers = HTTPHeaders()
-        let request = AF.request(Endpoints.baseUrl + Endpoints.loginUrl, method: .post, parameters: parameters as Parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil, requestModifier: nil)
+        let request = AF.request(Endpoints.baseUrl + Endpoints.loginUrl, method: .post,
+                                 parameters: parameters as Parameters, encoding: JSONEncoding.default,
+                                 headers: headers, interceptor: nil, requestModifier: nil)
         request.validate().response { (response) in
             switch response.result {
             case .success( _):
@@ -81,7 +85,9 @@ class APIClient: NSObject {
         parameters["client_id"] = Constants.clienId
         parameters["client_secret"] = Constants.clientSecret
         let headers = HTTPHeaders()
-        let request = AF.request(Endpoints.baseUrl + Endpoints.forgotPasswordUrl, method: .post, parameters: parameters as Parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil, requestModifier: nil)
+        let request = AF.request(Endpoints.baseUrl + Endpoints.forgotPasswordUrl, method: .post,
+                                 parameters: parameters as Parameters, encoding: JSONEncoding.default,
+                                 headers: headers, interceptor: nil, requestModifier: nil)
         request.validate().response { (response) in
             switch response.result {
             case .success( _):
@@ -98,7 +104,7 @@ class APIClient: NSObject {
         }
     }
     
-    func post(url : String,
+    func post(url: String,
               parameters: [String: Any]?,
               encoding: ParameterEncoding,
               success: @escaping SuccessResponse,
@@ -106,7 +112,7 @@ class APIClient: NSObject {
         execute(url: url, parameters: parameters, method: .post, encoding: encoding, success: success, failure: failure)
     }
     
-    func get(url : String,
+    func get(url: String,
              parameters: [String: Any]?,
              encoding: ParameterEncoding,
              success: @escaping SuccessResponse,
@@ -114,7 +120,7 @@ class APIClient: NSObject {
         execute(url: url, parameters: parameters, method: .get, encoding: encoding, success: success, failure: failure)
     }
     
-    fileprivate func execute(url : String,
+    fileprivate func execute(url: String,
                              parameters: [String: Any]?,
                              method: HTTPMethod,
                              encoding: ParameterEncoding,
@@ -125,7 +131,13 @@ class APIClient: NSObject {
             headers.add(name: "Authorization", value: "Bearer" + " " + accessToken)
         }
         let interceptor = NimbleRequestInterceptor()
-        let request = AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor, requestModifier: nil)
+        let request = AF.request(url,
+                                 method: method,
+                                 parameters: parameters,
+                                 encoding: encoding,
+                                 headers: headers,
+                                 interceptor: interceptor,
+                                 requestModifier: nil)
         request.validate().response { (response) in
             switch response.result {
             case .success( _):

@@ -12,11 +12,14 @@ import NVActivityIndicatorView
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var surveysCollectionView: UICollectionView!
+    private let refreshControl = UIRefreshControl()
     var activityIndicatorView: NVActivityIndicatorView!
     var surveys = [Survey]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(refreshControllPulled(_:)), for: .valueChanged)
+        surveysCollectionView.refreshControl = refreshControl
         surveysCollectionView.delegate = self
         surveysCollectionView.dataSource = self
         setupIndicatorView()
@@ -27,7 +30,9 @@ class HomeViewController: UIViewController {
     }
     
     private func setupIndicatorView() {
-        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20), type: .ballRotateChase, color: .white)
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20),
+                                                        type: .ballRotateChase,
+                                                        color: .white)
         activityIndicatorView.center = self.view.center
         self.view.addSubview(activityIndicatorView)
     }
@@ -42,10 +47,18 @@ class HomeViewController: UIViewController {
             self?.activityIndicatorView.stopAnimating()
         } failure: { [weak self] (errors) in
             self?.activityIndicatorView.stopAnimating()
-            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle, subtitle: errors?.getErrorsString(), style: .info, colors: CustomBannerColors())
+            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle,
+                                                   subtitle: errors?.getErrorsString(),
+                                                   style: .info,
+                                                   colors: CustomBannerColors())
             banner.show()
         }
 
+    }
+    
+    @objc func refreshControllPulled(_ sender: Any) {
+        fetchSurveyList()
+        refreshControl.endRefreshing()
     }
 
 }
@@ -60,7 +73,8 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = surveysCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionViewCellsId.surveyCell, for: indexPath) as! SurveyCollectionViewCell
+        let cell = surveysCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionViewCellsId.surveyCell,
+                                                             for: indexPath) as! SurveyCollectionViewCell
         cell.survey = surveys[indexPath.row]
         cell.setupSurvey()
         cell.pageControl.numberOfPages = surveys.count

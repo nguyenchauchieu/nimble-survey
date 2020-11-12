@@ -8,8 +8,10 @@
 import Foundation
 import Alamofire
 class SurveyService {
-    func getSurveys(completion: @escaping ([Survey]) -> Void, failure: @escaping FailureResponse){
-        APIClient.shared.get(url: Endpoints.baseUrl + Endpoints.getSurveyList, parameters: nil, encoding: JSONEncoding.default) { (result) in
+    func getSurveys(completion: @escaping ([Survey]) -> Void, failure: @escaping FailureResponse) {
+        APIClient.shared.get(url: Endpoints.baseUrl + Endpoints.getSurveyList,
+                             parameters: nil,
+                             encoding: JSONEncoding.default) { (result) in
             let jsonDecoder = JSONDecoder()
             if let result = result, let surveyResponse = try? jsonDecoder.decode(SurveysResponseModel.self, from: result) {
                 self.cacheSurveys(surveys: surveyResponse.data)
@@ -17,7 +19,8 @@ class SurveyService {
             }
         } failure: { (errorMessage) in
             let jsonDecoder = JSONDecoder()
-            if let cachedData = UserDefaults.standard.object(forKey: Constants.UserDefaultKeys.cachedSurveys) as? Data, let cachedSurveys = try? jsonDecoder.decode([Survey].self, from: cachedData) {
+            if let cachedData = UserDefaults.standard.object(forKey: Constants.UserDefaultKeys.cachedSurveys) as? Data,
+               let cachedSurveys = try? jsonDecoder.decode([Survey].self, from: cachedData) {
                 completion(cachedSurveys)
             } else {
                 failure(errorMessage)
@@ -25,13 +28,10 @@ class SurveyService {
         }
     }
     
-    private func cacheSurveys(surveys: [Survey]) -> Bool {
+    private func cacheSurveys(surveys: [Survey]) {
         let jsonEncoder = JSONEncoder()
         if let surveyListData = try? jsonEncoder.encode(surveys) {
             UserDefaults.standard.set(surveyListData, forKey: Constants.UserDefaultKeys.cachedSurveys)
-            return true
-        } else {
-            return false
         }
     }
 }

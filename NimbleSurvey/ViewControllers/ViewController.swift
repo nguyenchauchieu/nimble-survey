@@ -119,8 +119,9 @@ class LoginViewController: UIViewController {
     
     @objc private func forgotPasswordButtonTouchUpInside(_ sender: Any) {
         let loginStoryboard = UIStoryboard.init(name: Constants.Storyboards.login, bundle: nil)
-        let resetPasswordVC = loginStoryboard.instantiateViewController(identifier: Constants.ViewControllers.resetPassword) as! ResetPasswordViewController
-        self.present(resetPasswordVC, animated: true, completion: nil)
+        if let resetPasswordVC = loginStoryboard.instantiateViewController(identifier: Constants.ViewControllers.resetPassword) as ResetPasswordViewController {
+            self.present(resetPasswordVC, animated: true, completion: nil)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

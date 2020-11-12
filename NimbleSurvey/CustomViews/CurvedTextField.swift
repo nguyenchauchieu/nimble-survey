@@ -22,9 +22,10 @@ class CurvedTextField: UITextField {
     private func setupView() {
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
-        
+        let placeHolderColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
         self.attributedPlaceholder =
-            NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)])
+            NSAttributedString(string: self.placeholder ?? "",
+                               attributes: [NSAttributedString.Key.foregroundColor: placeHolderColor])
 
     }
     
