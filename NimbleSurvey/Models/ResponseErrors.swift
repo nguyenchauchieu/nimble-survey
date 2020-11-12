@@ -8,11 +8,10 @@
 import Foundation
 public struct ResponseErrors: Codable {
     var errors: [ResponseError] = [ResponseError]()
-    
     func getErrorsString() -> String {
         var errorString = ""
         for index in 0...errors.count - 1 {
-            errorString = errorString + errors[index].detail + "\n"
+            errorString += errors[index].detail + "\n"
         }
         return errorString
     }

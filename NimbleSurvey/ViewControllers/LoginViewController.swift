@@ -39,19 +39,23 @@ class LoginViewController: UIViewController {
     }
     
     private func setupEmailTextField() {
-        let passwordTextFieldRightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        passwordTextFieldRightButton.setTitle(Constants.Contents.Buttons.forgotPassword, for: .normal)
-        passwordTextFieldRightButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        passwordTextFieldRightButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3), for: .normal)
-        passwordTextFieldRightButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6), for: .highlighted)
-        passwordTextFieldRightButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
-        passwordTextFieldRightButton.addTarget(self, action: #selector(forgotPasswordButtonTouchUpInside(_:)), for: .touchUpInside)
-        passwordTextField.rightView = passwordTextFieldRightButton
+        let passwordRightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        passwordRightButton.setTitle(Constants.Contents.Buttons.forgotPassword, for: .normal)
+        passwordRightButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        passwordRightButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3),
+                                          for: .normal)
+        passwordRightButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6),
+                                          for: .highlighted)
+        passwordRightButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        passwordRightButton.addTarget(self, action: #selector(forgotPasswordButtonTouchUpInside(_:)), for: .touchUpInside)
+        passwordTextField.rightView = passwordRightButton
         passwordTextField.rightViewMode = .always
     }
     
     private func setupIndicatorView() {
-        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), type: .ballRotateChase, color: .white)
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30),
+                                                        type: .ballRotateChase,
+                                                        color: .white)
         activityIndicatorView.center = self.view.center
         self.view.addSubview(activityIndicatorView)
     }
@@ -124,7 +128,10 @@ class LoginViewController: UIViewController {
             NotificationCenter.default.post(name: Constants.NimbleSurveyNotifications.LoginDone, object: nil)
         } failure: { [weak self] (errors) in
             self?.activityIndicatorView.stopAnimating()
-            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle, subtitle: errors?.getErrorsString(), style: .info, colors: CustomBannerColors())
+            let banner = GrowingNotificationBanner(title: Constants.Contents.Banner.genericTitle,
+                                                   subtitle: errors?.getErrorsString(),
+                                                   style: .info,
+                                                   colors: CustomBannerColors())
             banner.show()
         }
     }
