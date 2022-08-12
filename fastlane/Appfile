@@ -1,0 +1,6 @@
+app_identifier("com.nvn.vibetv.dev", "com.nvn.vibetv") # The bundle identifier of your app
+apple_id("vdc_app@navercorp.com") # Your Apple email address
+
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

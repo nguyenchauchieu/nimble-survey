@@ -1,20 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Parallel Stages') {
-            parallel {
-        stage('First Stage') {
+        stage('Build VIBE TVOS') {
             steps {
-                sleep 5
-                echo 'This is First Step'
+                echo 'BUILDING'
             }
-        }
-        stage('Second Stage') {
-            steps {
-                echo 'This is Second Step'
-            }
-        }
-    }
         }
     }
 }
