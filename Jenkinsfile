@@ -1,7 +1,8 @@
 pipeline {
     agent any
     stages {
-        stage('Build VIBE TVOS') {
+        stage('Build Nimble Survey') {
+            when { changeRequest() }
             steps {
                 echo 'BUILDING'
             }
